@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.stevendrumm.interacting.MainActivity"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="2"
+            android:hint="Numero" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Llamar"
+            android:id="@+id/buttonLlamar"
+            android:layout_weight="1"
+            android:onClick="llamar" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/latitud"
+            android:layout_weight="1.5" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="text|textCapCharacters|numberDecimal"
+            android:ems="10"
+            android:id="@+id/longitud"
+            android:layout_weight="1.5" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Buscar"
+            android:id="@+id/buttonbuscar"
+            android:layout_weight="1"
+            android:onClick="buscarMapa" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/Url"
+            android:layout_weight="3" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Abrir"
+            android:id="@+id/buttonNavegar"
+            android:layout_weight="1"
+            android:onClick="AbrirUrl" />
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/LinearLayout02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView android:text="Destinatario"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtForEmail"
+            android:layout_weight="1">
+
+        </TextView>
+        <EditText android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:width="170dip"
+            android:id="@+id/etEmail"
+            android:layout_weight="2"
+            android:inputType="textEmailAddress">
+        </EditText>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/LinearLayout03"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView android:text="Asunto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtForSubject"
+            android:layout_weight="1"></TextView>
+        <EditText android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:width="170dip"
+            android:id="@+id/etSubject"
+            android:inputType="textEmailSubject"
+            android:layout_weight="2">
+        </EditText>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/LinearLayout04"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView android:text="Mensaje"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtForBody"
+            android:layout_weight="1"></TextView>
+        <EditText android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:lines="5"
+            android:width="300dip"
+            android:id="@+id/etBody"
+            android:layout_weight="2">
+        </EditText>
+    </LinearLayout>
+    <CheckBox android:text="@string/enviar_cono_adjunto"
+        android:id="@+id/chkAttachment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enviar"
+        android:id="@+id/btnEnviar"
+        android:layout_gravity="center_horizontal"
+        android:onClick="enviarEmail" />
+</LinearLayout>
