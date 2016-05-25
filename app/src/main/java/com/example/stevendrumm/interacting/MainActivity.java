@@ -1,6 +1,8 @@
 package com.example.stevendrumm.interacting;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +11,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     EditText campoTelefono;
@@ -50,6 +54,15 @@ public class MainActivity extends AppCompatActivity {
         Uri number = Uri.parse("tel:"+campoTelefono.getText().toString());
         Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
         startActivity(callIntent);
+        PackageManager packageManager = getPackageManager();
+        List<ResolveInfo> activities = packageManager.queryIntentActivities(callIntent, 0);
+        boolean isIntentSafe = activities.size() > 0;
+
+// Start an activity if it's safe
+        if (isIntentSafe) {
+            startActivity(callIntent);
+        }
+
     }
     public void buscarMapa(View v){
         // Map point based on address
@@ -57,12 +70,30 @@ public class MainActivity extends AppCompatActivity {
 // Or map point based on latitude/longitude
         Uri location = Uri.parse("geo:"+latitud.getText().toString()+","+longitud.getText().toString()+"?z=14"); // z param is zoom level
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
-        startActivity(mapIntent);
+        PackageManager packageManager = getPackageManager();
+        List<ResolveInfo> activities = packageManager.queryIntentActivities(mapIntent, 0);
+        boolean isIntentSafe = activities.size() > 0;
+
+// Start an activity if it's safe
+        if (isIntentSafe) {
+            startActivity(mapIntent);
+        }
+
     }
     public void AbrirUrl(View v){
         Uri webpage = Uri.parse(url.getText().toString());
         Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
-        startActivity(webIntent);
+        PackageManager packageManager = getPackageManager();
+        List<ResolveInfo> activities = packageManager.queryIntentActivities(webIntent, 0);
+        boolean isIntentSafe = activities.size() > 0;
+
+// Start an activity if it's safe
+        if (isIntentSafe) {
+            startActivity(webIntent);
+            Toast.makeText(MainActivity.this, "Pagina cargada", Toast.LENGTH_LONG).show();
+        }
+
+
     }
     public void enviarEmail(View v){
 
@@ -81,10 +112,19 @@ public class MainActivity extends AppCompatActivity {
             //indicamos el tipo de dato
             emailIntent.setType("image/png");
         }
+        PackageManager packageManager = getPackageManager();
+        List<ResolveInfo> activities = packageManager.queryIntentActivities(emailIntent, 0);
+        boolean isIntentSafe = activities.size() > 0;
+
+// Start an activity if it's safe
+        if (isIntentSafe) {
+
+            startActivity(emailIntent);
+            Toast.makeText(MainActivity.this, "email enviado", Toast.LENGTH_LONG).show();
+        }
 
         //iniciamos la actividad
-        startActivity(emailIntent);
-        Toast.makeText(MainActivity.this, "email enviado", Toast.LENGTH_LONG).show();
+
 
     }
 
