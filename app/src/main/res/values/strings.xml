@@ -2,4 +2,5 @@
     <string name="app_name">Interacting</string>
     <string name="enviar_cono_adjunto">Enviar ícono adjunto</string>
     <string name="enviar">Enviar</string>
+    <string name="chooser_title">Abrir con</string>
 </resources>
